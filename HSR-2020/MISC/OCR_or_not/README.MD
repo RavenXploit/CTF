@@ -138,7 +138,7 @@ We obtain the following text :
 
 
 
-** And voila ! We got the flag : HSR{1mag1ck_1s_A_gr3at_t00l}**
+**And voila ! We got the flag : HSR{1mag1ck_1s_A_gr3at_t00l}**
 
 
 
