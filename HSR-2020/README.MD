@@ -10,6 +10,7 @@ This folder contains the writeups of the challenges I was able to validate durin
 For challenges that i've not resolve my self please check the followings writeups : 
 
 Leak - s73p1n (Hack-togone) : https://github.com/s73p1n/Hack-togone/tree/master/HSR2020/Misc/Leak
+
 Is so Private - s73p1n (Hack-togone) : https://github.com/s73p1n/Hack-togone/tree/master/HSR2020/Forensic/IsSoPrivate
 
 Thanks to everyone ! Keep Hacking ! ;)
