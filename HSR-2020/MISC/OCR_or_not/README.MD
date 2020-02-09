@@ -2,7 +2,7 @@
 
 This challenge provides a zip archive in which a large amount of images are stored.
 
-Each of these images contains a letter : 
+Each of these images contains a character : 
 
 ![Exif data](./images/image_0000.png)
 
