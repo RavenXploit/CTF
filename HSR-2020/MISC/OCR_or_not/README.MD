@@ -47,7 +47,7 @@ f.close()
 
 ```
 
-Despite several attempts I could not solve this challenge with to Tesseract which seems to have difficulties when the image contains only one character.
+Despite several attempts I could not solve this challenge with Tesseract which seems to have difficulties when the image contains only one character.
 
 So I analyzed the problem from another perspective!
 
