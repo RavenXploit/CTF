@@ -6,8 +6,7 @@ Each of these images contains a letter :
 
 ![Exif data](./images/image_0000.png)
 
-
-# The wrong way 
+# The wrong way 
 
 Although the title of this MISC challenge is very clear, I first tried to resolve this challenge via OCR. 
 
