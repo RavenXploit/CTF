@@ -1,6 +1,4 @@
-
 ![HSR 2020 LOGO](./logo_HSR2020.svg)
-<img src="./logo_HSR2020.svg">
 
 # HackSecuReims 2020
 
