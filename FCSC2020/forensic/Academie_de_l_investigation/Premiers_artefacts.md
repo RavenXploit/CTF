@@ -34,7 +34,7 @@ Celle-ci était composée des challenges suivants :
 * Dans les nuages
 
 
-Ce challenge fera l'objet d'une rapide présentation de volatility ainsi que des méthodes qui permettent de construire les profils d'analyses.
+Ce challenge fera l'objet d'une rapide présentation de volatility ainsi que des méthodes qui permettent de construire les profiles d'analyses.
 
 ## Présentation de volatility
 
@@ -42,7 +42,7 @@ L’analyse de la mémoire est une part très importante des investigations fore
 Elle peut révéler des processus malicieux, des activités réseaux suspectes ,des clés de registre, des mots de passe, etc.
 
 L’outil les plus populaires pour l’analyse des mémoires RAM est [Volatility](https://github.com/volatilityfoundation/volatility).
-Cette plateforme Open Source, implémentée dans le language Python, supporte plusieurs types d’image mémoires :
+Cette plateforme Open Source, implémentée dans le language Python, supporte plusieurs formats d’image mémoires :
 
   - Raw linear sample (dd)
   - Hibernation file (from Windows 7 and earlier)
@@ -66,20 +66,20 @@ Pour cela, volatility se base sur la notion de `profile`.
 Un profil correspondant à la version du noyau du système que vous souhaitez analyser. 
 
 Un profil Linux est essentiellement un fichier zip contenant des informations sur les structures de données du noyau et les symboles de débogage. 
-Ces données données et symboles sont utilisées par Volatility pour localiser les informations critiques et les analyser une fois trouvées. 
+Ces données et symboles sont utilisées par Volatility pour localiser les informations critiques et les analyser une fois trouvées. 
 
 Si un profil préétabli n'existe pas, il est nécéssaire de créer le notre.
 
 Bien évidemment, challenge de l'ANSSI oblige, nous devons créer notre profil pour effectuer l'analyse.
 
-Dans un premier temps il est nécéssaire de monter un système identique. 
+Dans un premier temps, il est nécéssaire de monter un système identique. 
 En effet, l'erreur la plus courante en matière d'analyse de mémoire de Linux consiste à établir un profil pour un système autre que la machine que vous voulez analyser. 
 Par exemple, vous ne pouvez pas construire un profil pour un système Debian 2.6.32 afin d'analyser un vidage de mémoire à partir de Mandrake 2.6.32. 
 De même, vous ne pouvez pas construire un profil pour un système SuSE 2.5.35 pour analyser un vidage de mémoire à partir de SuSE 2.6.42. 
 
 Vous devez vous assurer que le profil que vous créez correspond au système cible : 
 - même distribution Linux 
-- même version exacte noyau
+- même version pour le noyau
 - architecture du processeur (32-bit, 64-bit, etc) identique
 
 Nous allons donc récupérer les informations qui concerne le système à analyser. 
@@ -93,7 +93,7 @@ Linux version 5.4.0-4-amd64 (debian-kernel@lists.debian.org) (gcc version 9.2.1 
 Linux version 5.4.0-4-amd64 (debian-kernel@lists.debian.org) (gcc version 9.2.1 20200203 (Debian 9.2.1-28)) #1 SMP Debian 5.4.19-1 (2020-02-13)
 ```
 
-Nous pouvons voir que nous avons à faire à une debian, on récupère la version exacte: 
+Nous pouvons voir que nous avons à faire à une Debian, on récupère la version exacte: 
 
 ```bash
 RavenXploit@pc:~/FCSC/forensic$ strings dmp.mem | grep -e jessy -e buster -e bullseye
@@ -104,7 +104,7 @@ built on Debian bullseye/sid, running on Debian bullseye/sid Chrome/80.0.3987.13
 Debian GNU/Linux bullseye/sid
 ```
 
-La version bullseye/sid est ici utilisée. Il s'agit d'une version de Debian en cours de développement (lors de la rédaction de WU).
+La version bullseye/sid est ici utilisée. Il s'agit d'une version de Debian en cours de développement (lors de la rédaction de ce WU).
 
 Nous récupérons l'iso sur le site de Debian et nous installons le sytème d'exploitation dans une solution de virtualisation.
 Dans mon cas j'ai utilisé QEMU mais cela peut-être fait avec la solution de votre choix.
@@ -117,7 +117,7 @@ root@challenge:~$ uname -a
 Linux challenge 5.4.0-4-amd64 #1 SMP Debian 5.4.19-1 (2020-02-13) x86_64 GNU/Linux
 ```
 
-Nous avons bien la version de kernel souhaité, si cela n'avait pas été le cas nous aurions dû compiler nous même notre kernel.
+Nous avons bien la version de kernel souhaité. Si cela n'avait pas été le cas nous aurions dû compiler nous même notre kernel.
 
 Par la suite, il est nécéssaire d'installer les paquets suivants :
 
@@ -210,7 +210,7 @@ Les symboles quand à eux sont contenus dans le fichier `System.map`.
 Ce fichier se trouve presque toujours dans le répertoire /boot de l'installation. Sinon vous pouvez le générer vous-même en exécutant "nm" sur le fichier vmlinux du noyau. 
 Si vous avez déjà mis à jour le noyau sur votre système dans le passé, le répertoire /boot peut contenir plusieurs fichiers System.map - assurez-vous donc de choisir le bon.
 
-Pour créer notre profil nous allons donc mettre dans une archive zip les élèments suivants :
+Pour créer notre profil nous allons mettre dans une archive zip les élèments suivants :
 * les vtypes 
 * les symboles
 
@@ -218,7 +218,7 @@ Pour créer notre profil nous allons donc mettre dans une archive zip les élèm
 zip debian_5.4.0-4-amd64.zip module.dwarf  /boot/System.map-5.4.0-4-amd64
 ```
 
-Une fois cette archive crée, il est nécessaire de récupérer ce fichier sur votre machine hôte et de la placer dans `volatility/plugins/overlays/linux/`.
+Une fois cette archive crée, il est nécessaire de récupérer celle-ci sur votre machine hôte et de la placer dans `volatility/plugins/overlays/linux/`.
 
 ```bash
 RavenXploit@pc:~/FCSC/forensic$ sudo mv debian_5.4.0-4-amd64.zip /usr/lib/python2.7/dist-packages/volatility/plugins/overlays/linux/
@@ -255,7 +255,7 @@ Volatility Foundation Volatility Framework 2.6
 
 Le processus est donc pool-xfconfd.
 
-Concernant la commande exacte qui a été exécutée le 2020-03-26 23:29:19 UTC, nous utilisons la fonctionnalité `linux_bash` qui permet de récupérer l'historique des commandes présents dans la mémoire (dû au chargement du processus bash).
+Concernant la commande exacte qui a été exécutée le 2020-03-26 23:29:19 UTC, nous utilisons la fonctionnalité `linux_bash` qui permet de récupérer l'historique des commandes présentes dans la mémoire (dû au chargement du processus bash).
 
 ```bash 
 RavenXploit@pc:~/FCSC/forensic$ volatility -f dmp.mem --profile=Linuxdebian_5_4_0-4-amd64x64 linux_bash
