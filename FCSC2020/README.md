@@ -1,4 +1,4 @@
-![FCSC 2020 LOGO](./logo.png)
+![FCSC 2020 LOGO](logo.png)
 
 #  Présélection du France Cybersecurity Challenge (FCSC) 2020
 

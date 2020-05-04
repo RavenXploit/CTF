@@ -122,4 +122,4 @@ Nous avons donc :
 
 Ce qui donne le flag : FCSC{challenge.fcsc:Lesage:5.4.0-4-amd64}
 
-![FCSC 2020 LOGO](./medias/meme1.png)
+![FCSC 2020 LOGO](medias/meme1.png)
