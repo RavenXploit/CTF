@@ -1,4 +1,4 @@
-![FCSC 2020 LOGO](../../logo.png)
+![FCSC 2020 LOGO](logo.png)
 
 # Académie de l'investigation - C'est la rentrée
 
@@ -6,6 +6,7 @@
 ![Badge introduction](https://img.shields.io/static/v1?label=Catégories%20Complémentaires&message=GNU/Linux,%20Mémoire,%20DFIR&color=091B33&style=for-the-badge)
 
 
+# Énoncé 
 >Bienvenue à l'académie de l'investigation numérique ! Votre mission, valider un maximum d'étapes de cette série afin de démontrer votre dextérité en analyse mémoire GNU/Linux.
 >
 >Première étape : retrouvez le HOSTNAME, le nom de l'utilisateur authentifié lors du dump et la version de Linux sur lequel le dump a été fait.
@@ -29,7 +30,6 @@ Celle-ci était composée des challenges suivants :
 * Administration
 * Premiers artéfacts
 * Dans les nuages
-
 
 
 
@@ -76,7 +76,7 @@ Nous trouvons le hostname qui est "challenge.fcsc"
 
 
 Concernant l'utilisateur, j'ai utilisé une part de guessing.
-Nous savons que généralement chaque utilisateurs possède un home directory. Utilisons ça à notre avantage : 
+Nous savons que, généralement, chaque utilisateurs possèdent un home directory. Utilisons ça à notre avantage : 
 
 ```bash
 RavenXploit@pc:~/FCSC/forensic$ strings dmp.mem | grep /home/ 
@@ -101,8 +101,7 @@ Linux version 5.4.0-4-amd64 (debian-kernel@lists.debian.org) (gcc version 9.2.1 
 Linux version 5.4.0-4-amd64 (debian-kernel@lists.debian.org) (gcc version 9.2.1 20200203 (Debian 9.2.1-28)) #1 SMP Debian 5.4.19-1 (2020-02-13)
 ```
 
-Nous en profitons également pour récupérer les informations de debian, ceci nous sera utile pour les challenges suivants : 
-
+Nous en profitons également pour récupérer les informations liées à la version de debian: 
 
 ```bash
 RavenXploit@pc:~/FCSC/forensic$ strings dmp.mem | grep -e jessy -e buster -e bullseye
@@ -111,9 +110,9 @@ Debian GNU/Linux bullseye/sid
 built on Debian bullseye/sid, running on Debian bullseye/sid Chrome/80.0.3987.132 Linux x86_64
 built on Debian bullseye/sid, running on Debian bullseye/sid Chrome/80.0.3987.132 Linux x86_64
 Debian GNU/Linux bullseye/sid
-
 ```
 
+Ceci nous sera utile pour les challenges suivants.
 
 Nous avons donc : 
 * hostname : challenge.fcsc
