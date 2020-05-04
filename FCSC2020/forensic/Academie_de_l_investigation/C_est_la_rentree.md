@@ -24,11 +24,11 @@ Ce challenge est le premier de de la série "l'Académie de l'investigation".
 
 Celle-ci était composée des challenges suivants : 
 
-* C'est la rentrée
+* [C'est la rentrée](./forensic/Academie_de_l_investigation/C_est_la_rentree.md)
+* [Premiers artéfacts](./Premiers_artefacts.md) 
 * Porte dérobée
 * Rédaction
 * Administration
-* Premiers artéfacts
 * Dans les nuages
 
 
