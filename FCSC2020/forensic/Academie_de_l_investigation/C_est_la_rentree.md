@@ -1,4 +1,4 @@
-![FCSC 2020 LOGO](logo.png)
+![FCSC 2020 LOGO](../../logo.png)
 
 # Académie de l'investigation - C'est la rentrée
 
